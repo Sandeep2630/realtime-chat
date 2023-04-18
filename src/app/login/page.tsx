@@ -1,14 +1,23 @@
 "use client";
-
 import Button from "@/components/ui/Button";
 import React, { use, useState } from "react";
+import { signIn } from "next-auth/react";
+import { toast } from "react-hot-toast";
 
 interface pageProps {}
 
 const page: React.FC<pageProps> = () => {
-  const [isLoading, setIsLoading] = useState<boolean>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  async function loginWithGoogle() {}
+  async function loginWithGoogle() {
+    setIsLoading(true);
+    try {
+      await signIn("google");
+    } catch (error) {
+      setIsLoading(false);
+      toast.error("Something went wrong with your login");
+    }
+  }
   return (
     <>
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
