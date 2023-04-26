@@ -10,8 +10,10 @@ const page: React.FC<pageProps> = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   async function loginWithGoogle() {
+    
     setIsLoading(true);
     try {
+     
       await signIn("google");
     } catch (error) {
       setIsLoading(false);
