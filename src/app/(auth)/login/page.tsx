@@ -13,7 +13,7 @@ const page: React.FC<pageProps> = () => {
     
     setIsLoading(true);
     try {
-     
+    //  throw new Error('something went wrong')
       await signIn("google");
     } catch (error) {
       setIsLoading(false);
